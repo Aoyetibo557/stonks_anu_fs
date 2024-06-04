@@ -18,6 +18,7 @@ const ViewProfile = () => {
     loading,
     hasChannel,
     userChannel,
+    channelCount,
     profileQuery,
     profileMutation,
   } = useProfile();
@@ -79,13 +80,14 @@ const ViewProfile = () => {
             profile={profile}
             onEditClick={() => setIsModalOpen(true)}
           />
+          <div className=" flex flex-col items-center p-5 gap-2">
+            <span className="font-bold text-xl">{channelCount}</span>
+            <span className="font-normal text-base">channels</span>
+          </div>
         </div>
-        {/* <div className=" flex flex-col p-5 gap-2">
-          <span className="font-bold text-xl">{0}</span>
-          <span className="font-normal text-base">channels</span>
-        </div> */}
       </div>
       <Divider />
+
       <div>
         <Modal
           title="Complete Your Profile"

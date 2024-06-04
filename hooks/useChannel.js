@@ -16,23 +16,6 @@ export const useChannel = (channelId) => {
     }
   }, [userLoading]);
 
-  const userHasChannel = async () => {
-    if (!user) return false;
-
-    const { data, error } = await supabase
-      .from("channels")
-      .select("id")
-      .eq("owner_id", user.id)
-      .single();
-
-    if (error && error.code !== "PGRST116") {
-      setError(error);
-      return false;
-    }
-
-    return data ? true : false;
-  };
-
   const createNewChannel = async (channelName) => {
     if (!user) return;
 
@@ -121,7 +104,6 @@ export const useChannel = (channelId) => {
   return {
     getAllChannels,
     createNewChannel,
-    userHasChannel,
     streamCount,
     loading,
     error,

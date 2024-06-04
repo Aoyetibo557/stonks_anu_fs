@@ -8,6 +8,7 @@ export const useProfile = () => {
   const [profile, setProfile] = useState(null);
   const [hasChannel, setHasChannel] = useState(false);
   const [channel, setChannel] = useState(null);
+  const [channelsCount, setChannelsCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const queryClient = useQueryClient();
@@ -48,6 +49,21 @@ export const useProfile = () => {
     return data;
   };
 
+  const fetchUserChannels = async () => {
+    if (!id) return false;
+
+    const { data, error } = await supabase
+      .from("channels")
+      .select("id")
+      .eq("owner_id", id);
+
+    setChannelsCount(data?.length);
+    if (error && error.code !== "PGRST116") {
+      setError(error);
+      return false;
+    }
+  };
+
   const profileQuery = useQuery(["profile", id], fetchProfile, {
     onSuccess: setProfile,
   });
@@ -59,6 +75,7 @@ export const useProfile = () => {
   });
 
   useEffect(() => {
+    fetchUserChannels();
     setLoading(true);
     const channel = supabase
       .channel("channels")
@@ -88,7 +105,9 @@ export const useProfile = () => {
     loading,
     hasChannel,
     userChannel: channel,
+    channelCount: channelsCount,
     profileQuery,
     profileMutation,
+    fetchUserChannels,
   };
 };
