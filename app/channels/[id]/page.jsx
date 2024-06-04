@@ -149,7 +149,8 @@ const ViewChannel = () => {
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/jfKfPfyJRdk"
+              src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&loop=1&autopause=0"
+              allow="autoplay; fullscreen"
               frameBorder="0"
               autoPlay
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

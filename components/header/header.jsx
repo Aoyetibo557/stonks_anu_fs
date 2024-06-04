@@ -30,7 +30,9 @@ const Header = () => {
   return (
     <div
       className={`flex flex-row items-center justify-between text-white bg-gray-800 p-6`}>
-      <div className="font-bold text-2xl">Stonks Full Stack</div>
+      <Link href="/" className="font-bold text-2xl">
+        Stonks Full Stack
+      </Link>
       <nav className="flex flex-row items-center gap-5">
         {loading ? (
           <div>
