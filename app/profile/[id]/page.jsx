@@ -7,7 +7,6 @@ import { useChannelActions } from "../../../hooks/useChannelActions";
 import { useFollow } from "../../../hooks/useFollow";
 import { Avatar, Spin, Modal, Divider, message } from "antd";
 import { ProfileAvatar } from "../../../components/profile/profileAvatar";
-import { StreamingControls } from "../../../components/profile/StreamingControls";
 import { useUser } from "../../../hooks/userUser";
 import { useFollowStatus } from "../../../hooks/useFollowStatus";
 
